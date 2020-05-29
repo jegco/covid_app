@@ -12,7 +12,7 @@ class LocalInfoPage extends StatefulWidget{
   _LocalInfoPageState createState() => _LocalInfoPageState();
 }
 
-class _LocalInfoPageState extends State<LocalInfoPage>{
+class _LocalInfoPageState extends State<LocalInfoPage> with AutomaticKeepAliveClientMixin <LocalInfoPage>{
   LocalInfoBloc _bloc;
 
   @override
@@ -24,6 +24,7 @@ class _LocalInfoPageState extends State<LocalInfoPage>{
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return BlocBuilder(
       bloc: _bloc,
       builder: (context, state) {
@@ -170,7 +171,7 @@ class _LocalInfoPageState extends State<LocalInfoPage>{
                         Expanded(
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
-                            child: Image.asset('assets/img/sofka-logo.png'),
+                            child: Image.asset('assets/img/virus.png'),
                           ),
                         )
                       ],
@@ -248,5 +249,8 @@ class _LocalInfoPageState extends State<LocalInfoPage>{
       },
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 
 }

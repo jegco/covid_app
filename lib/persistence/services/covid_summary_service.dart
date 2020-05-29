@@ -9,7 +9,7 @@ class CovidSummaryService {
   CovidSummaryService(this._client);
 
   Future<CovidSummary> getCovidSummary(String countryName) async {
-    var response = await _client.get<CovidSummary>('summary');
+    var response = await _client.get('summary');
     return CovidSummary.fromJson(response.data);
   }
 }

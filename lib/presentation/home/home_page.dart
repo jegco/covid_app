@@ -6,9 +6,19 @@ import 'package:covidapp/presentation/localinfo/local_info_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+int value = 0;
+
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
+
+  int getPage() {
+    return value;
+  }
+
+  void setPage(int page) {
+    value = page;
+  }
 }
 
 class _HomePageState extends State<HomePage> {
@@ -22,7 +32,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void initState() {
-    _pageController = PageController(keepPage: true, initialPage: 0);
+    _pageController = PageController(keepPage: true, initialPage: widget.getPage());
     _navigationBloc = BlocProvider.of<HomeBloc>(context);
     super.initState();
   }

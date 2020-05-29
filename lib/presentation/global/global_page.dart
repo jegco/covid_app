@@ -11,7 +11,7 @@ class GlobalPage extends StatefulWidget {
   _GlobalPageState createState() => _GlobalPageState();
 }
 
-class _GlobalPageState extends State<GlobalPage>{
+class _GlobalPageState extends State<GlobalPage>  with AutomaticKeepAliveClientMixin<GlobalPage>{
   GlobalBloc _bloc;
 
   @override
@@ -23,6 +23,7 @@ class _GlobalPageState extends State<GlobalPage>{
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return BlocBuilder(
       bloc: _bloc,
       builder: (BuildContext context, GlobalState state) {
@@ -221,4 +222,7 @@ class _GlobalPageState extends State<GlobalPage>{
       },
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }
